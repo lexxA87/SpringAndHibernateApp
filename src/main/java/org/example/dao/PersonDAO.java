@@ -28,13 +28,31 @@ public class PersonDAO {
                 .getResultList();
     }
 
+    @Transactional(readOnly = true)
     public Person show(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.get(Person.class, id);
     }
 
-    public void save(Person person) {}
+    @Transactional
+    public void save(Person person) {
+        Session session = sessionFactory.getCurrentSession();
 
-    public void update(int id, Person updatedPerson) {}
+        session.persist(person);
+    }
 
-    public void delete(int id) {}
+    @Transactional
+    public void update(int id, Person updatedPerson) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.merge(updatedPerson);
+    }
+
+    @Transactional
+    public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Person person = session.get(Person.class, id);
+        session.remove(person);
+    }
 }

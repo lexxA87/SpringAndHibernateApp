@@ -54,12 +54,11 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
-                         @PathVariable("id") int id) {
+    public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "people/edit";
 
-        personDAO.update(id, person);
+        personDAO.update(person);
         return "redirect:/people";
     }
 

@@ -43,7 +43,7 @@ public class PersonDAO {
     }
 
     @Transactional
-    public void update(int id, Person updatedPerson) {
+    public void update(Person updatedPerson) {
         Session session = sessionFactory.getCurrentSession();
 
         session.merge(updatedPerson);

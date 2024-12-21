@@ -42,4 +42,8 @@ public class PeopleService {
     public void deleteById(int id) {
         peopleRepository.deleteById(id);
     }
+
+    public void test() {
+        System.out.println("Test inside transaction...");
+    }
 }

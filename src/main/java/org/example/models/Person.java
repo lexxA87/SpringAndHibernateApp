@@ -41,6 +41,10 @@ public class Person {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    @Enumerated(EnumType.ORDINAL)  // for save number index from enum
+    // @Enumerated(EnumType.STRING) for save string
+    private Moods mood;
+
     public Person() {}
 
     public Person(String name, int age) {
@@ -94,6 +98,14 @@ public class Person {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Moods getMood() {
+        return mood;
+    }
+
+    public void setMood(Moods mood) {
+        this.mood = mood;
     }
 
     @Override
